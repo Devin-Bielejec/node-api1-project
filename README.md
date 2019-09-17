@@ -63,7 +63,7 @@ Inside `index.js` add the code necessary to implement the following _endpoints_:
 
 When the client makes a `POST` request to `/api/users`:
 
-- If the request body is missing the `name` or `bio` property:
+[X] If the request body is missing the `name` or `bio` property:
 
   - cancel the request.
   - respond with HTTP status code `400` (Bad Request).
