@@ -11,7 +11,7 @@ let newId = 0;
 // handle requests to the root of the api, the / route
 server.post('/api/users', (req, res) => {
   const { name, bio } = req.body;
-  const newUser = { name, bio, id: newId}
+  const newUser = { name, bio, id: Date.now()}
 
   if (!name || !bio) {
     res.status(400).json({
