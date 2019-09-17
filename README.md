@@ -118,11 +118,11 @@ When the client makes a `PUT` request to `/api/users/:id`:
   - return HTTP status code `404` (Not Found).
   - return the following JSON object: `{ message: "The user with the specified ID does not exist." }`.
 
-- If the request body is missing the `name` or `bio` property:
+[X] If the request body is missing the `name` or `bio` property:
 
-  - cancel the request.
-  - respond with HTTP status code `400` (Bad Request).
-  - return the following JSON response: `{ errorMessage: "Please provide name and bio for the user." }`.
+  [X] cancel the request.
+  [X] respond with HTTP status code `400` (Bad Request).
+  [X] return the following JSON response: `{ errorMessage: "Please provide name and bio for the user." }`.
 
 - If there's an error when updating the _user_:
 

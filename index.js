@@ -63,14 +63,42 @@ server.delete("/api/users/:id", (req, res) => {
 
     db.remove(id)
     .then(user => {
-        user ? res.status(201).json({message: `User at id ${id} was removed!`}) : res.status(404).json({message: "The user with the specified ID does not exist."})
+        user ? res.status(200).json({message: `User at id ${id} was removed!`}) : res.status(404).json({message: "The user with the specified ID does not exist."})
+    })
+    .catch(err => {
+        res.status(500).json({
+            error: "The user information could not be retrieved."
+        })
+    })
+})
+
+server.put("/api/users/:id", (req, res) => {
+    const { id } = req.params;
+    const { name, bio } = req.body;
+    const newUser = { name, bio, id };
+
+    if (!name || !bio) {
+        res.status(400).json({
+            errorMessage: `Please provide name and bio for the user`
+            
+        })
+      }
+
+    db.update(id, newUser)
+    .then(user => {
+        user ? res.status(200).json({message: `User at id${id} was updated/created`}) : res.status(404).json({message: "The user with the sepecified ID does not exist"})
     })
     .catch(err => {
         res.status(500).json({
             error: "The user informatmion could not be retrieved."
         })
     })
+
+
+
 })
+
+
 
 // watch for connections on port 5000
 server.listen(5000, () =>
