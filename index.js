@@ -31,6 +31,19 @@ server.post('/api/users', (req, res) => {
 });
 });
 
+server.get("/api/users", (req, res) => {
+    db.find()
+    .then(users => {
+        res.status(201).json(users);
+    })
+    .catch(err => {
+        res.status(500).json({
+            err: err,
+            message: "The users information could not be retrieved."
+        })
+    })
+})
+
 // watch for connections on port 5000
 server.listen(5000, () =>
   console.log('Server running on http://localhost:5000')
